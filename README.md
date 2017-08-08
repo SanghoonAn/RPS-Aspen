@@ -33,7 +33,7 @@ All Reports are accessible from the Distric view under
 </ul>
 
 # Updating/Creating Reports and Procedures 
-<h4> Details</4>
+<h4> Details</h4>
 From one of the side tabs listed above, click on the entity to update or click "Options" then select "Add".  Fille out the Name and the ID. Either Update or upload the Source Code and Input definition.  For Reports, also update or upload the format definition.
 
 <h4> Navigation tab</h4>
