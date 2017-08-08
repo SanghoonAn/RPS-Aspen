@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tool-bundle create-date="2016-10-04">
+  <reports>
+    <report-definition id="RPS-AIP-IPO" name="Attendance Intervention Plans  - Status and Tracking Summary" javasource-file="INCOMPLETE_EDPLANS.java" input-file="AttendanceInterventionPlans-StatusandTrackingSummaryInput.xml" weight="1" design-file="AttendanceInterventionPlans-StatusandTrackingSummary.jrxml" engine-version="3.0.1" sequence-number="0">
+      <node key="student.std.list" org1-view="true" />
+    </report-definition>
+  </reports>
+</tool-bundle>
+

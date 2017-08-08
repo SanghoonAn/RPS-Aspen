@@ -1,0 +1,157 @@
+                                                import java.util.Collection;                                                                                                                          
+                                                import java.util.Date;                                                                                                                                
+                                                import java.util.Map;                                                                                                                                 
+                                                import java.util.concurrent.TimeUnit;                                                                                                                 
+                                                                                                                                                                                                      
+                                                import org.apache.ojb.broker.query.Criteria;                                                                                                          
+                                                import org.apache.ojb.broker.query.QueryByCriteria;                                                                                                   
+                                                                                                                                                                                                      
+                                                import com.follett.fsc.core.framework.persistence.SubQuery;                                                                                           
+                                                import com.follett.fsc.core.k12.beans.DistrictSchoolYearContext;                                                                                      
+                                                import com.follett.fsc.core.k12.tools.reports.ReportDataGrid;                                                                                         
+                                                import com.follett.fsc.core.k12.tools.reports.ReportJavaSourceNet;                                                                                    
+                                                import com.x2dev.sis.model.beans.ConductIncident;                                                                                                     
+                                                import com.x2dev.sis.model.beans.SisSchool;                                                                                                           
+                                                import com.x2dev.sis.model.beans.SisStaff;                                                                                                            
+                                                import com.x2dev.sis.model.beans.SisStudent;                                                                                                          
+                                                import com.x2dev.sis.model.beans.StudentEdPlan;                                                                                                       
+                                                import com.x2dev.sis.model.beans.StudentEdPlanMeeting;                                                                                                
+                                                import com.x2dev.utils.types.PlainDate;                                                                                                               
+                                                                                                                                                                                                      
+                                                public class ACTIVE_EDPLANS extends ReportJavaSourceNet {                                                                                             
+                                                	                                                                                                                                                     
+                                                /**                                                                                                                                                   
+                                                	 *                                                                                                                                                   
+                                                	 */                                                                                                                                                  
+                                                	private static final long serialVersionUID = 1L;                                                                                                     
+                                                	public static final String FIVE_DAY_PLAN = "5 day plan";                                                                                             
+                                                	public static final String HOME ="Home visit";                                                                                                       
+                                                	public static final String PHONE ="Phone";                                                                                                           
+                                                	                                                                                                                                                     
+                                                	/**                                                                                                                                                  
+                                                	 *	Start Date Parameter.                                                                                                                             
+                                                	 */	                                                                                                                                                 
+                                                	private static final String							START_DATE						= "StartDate";                                                                                     
+                                                                                                                                                                                                      
+                                                	/**                                                                                                                                                  
+                                                	 *	End Date Parameter.                                                                                                                               
+                                                	 */	                                                                                                                                                 
+                                                	private static final String							END_DATE						= "EndDate";                                                                                         
+                                                	                                                                                                                                                     
+                                                	public static final String		FIELD_OFFICER_NAME	= "Name";                                                                                             
+                                                	public static final String		FIELD_PHONECALL		= "Phone";                                                                                              
+                                                	public static final String		FIELD_HOMEVISIT		= "Home";                                                                                               
+                                                	public static final String		FIELD_PLAN_DATE		= "Date";                                                                                               
+                                                	public static final String		FIELD_STUDENT		= "Student";                                                                                              
+                                                	public static final String		FIELD_SCHOOL		= "School";                                                                                                
+                                                	public static final String		FIELD_DAYS		= "Days";                                                                                                    
+                                                                                                                                                                                                      
+                                                private  Collection <StudentEdPlan> c_edPlans;                                                                                                        
+                                                private Map<String, SisStudent>  m_Students;                                                                                                          
+                                                private Map<String, SisStaff>  m_Officers;                                                                                                            
+                                                private Map<String, SisSchool> m_Schools;                                                                                                             
+                                                                                                                                                                                                      
+                                                private PlainDate m_endDate;                                                                                                                          
+                                                private PlainDate m_startDate;                                                                                                                        
+                                                                                                                                                                                                      
+                                                	@SuppressWarnings("deprecation")                                                                                                                     
+                                                	@Override                                                                                                                                            
+                                                	                                                                                                                                                     
+                                                	                                                                                                                                                     
+                                                	protected Object gatherData() throws Exception {                                                                                                     
+                                                		                                                                                                                                                    
+                                                		m_startDate =(PlainDate)getParameter(START_DATE);                                                                                                   
+                                                		m_endDate =(PlainDate)getParameter(END_DATE);                                                                                                       
+                                                		                                                                                                                                                    
+                                                		loadData();                                                                                                                                         
+                                                		ReportDataGrid grid =processEdplans();                                                                                                              
+                                                		return grid;                                                                                                                                        
+                                                	}                                                                                                                                                    
+                                                                                                                                                                                                      
+                                                	                                                                                                                                                     
+                                                	public void loadData()                                                                                                                               
+                                                	{                                                                                                                                                    
+                                                		Criteria EdCriteria = new Criteria();                                                                                                               
+                                                		EdCriteria.addEqualTo(StudentEdPlan.COL_STATUS_CODE,  StudentEdPlan.StatusCode.ACTIVE.ordinal() );                                                  
+                                                    	EdCriteria.addEqualTo(StudentEdPlan.COL_FIELD_B075,   FIVE_DAY_PLAN );                                                                           
+                                                		EdCriteria.addNotNull(StudentEdPlan.COL_STAFF_OID);                                                                                                 
+                                                		if (m_startDate != null) EdCriteria.addGreaterOrEqualThan(StudentEdPlan.COL_EFFECTIVE_DATE, m_startDate);                                           
+                                                		if (m_endDate != null)   EdCriteria.addLessOrEqualThan(StudentEdPlan.COL_EFFECTIVE_DATE, m_endDate);                                                
+                                                        QueryByCriteria query = new QueryByCriteria(StudentEdPlan.class, EdCriteria);                                                                 
+                                                        c_edPlans = getBroker().getCollectionByQuery(query);                                                                                          
+                                                                                                                                                                                                      
+                                                        SubQuery sQuery = new SubQuery( StudentEdPlan.class,StudentEdPlan.COL_STUDENT_OID, EdCriteria );                                              
+                                                        Criteria StuCriteria = new Criteria();                                                                                                        
+                                                        StuCriteria.addIn(SisStudent.COL_OID, sQuery);                                                                                                
+                                                        QueryByCriteria stuQuery = new QueryByCriteria(SisStudent.class, StuCriteria);                                                                
+                                                        m_Students = getBroker().getMapByQuery(stuQuery, SisStudent.COL_OID, 5000);                                                                   
+                                                                                                                                                                                                      
+                                                        SubQuery oQuery = new SubQuery( StudentEdPlan.class,StudentEdPlan.COL_STAFF_OID, EdCriteria );                                                
+                                                        Criteria offCriteria = new Criteria();                                                                                                        
+                                                        offCriteria.addIn(SisStaff.COL_OID, oQuery);                                                                                                  
+                                                        QueryByCriteria offQuery = new QueryByCriteria(SisStaff.class, offCriteria);                                                                  
+                                                        m_Officers = getBroker().getMapByQuery(offQuery, SisStaff.COL_OID, 5000);                                                                     
+                                                                                                                                                                                                      
+                                                        Criteria scCriteria = new Criteria();                                                                                                         
+                                                        QueryByCriteria scQuery = new QueryByCriteria(SisSchool.class, scCriteria);                                                                   
+                                                        m_Schools = getBroker().getMapByQuery(scQuery, SisSchool.COL_OID, 5000);                                                                      
+                                                	}                                                                                                                                                    
+                                                	                                                                                                                                                     
+                                                	                                                                                                                                                     
+                                                	public ReportDataGrid processEdplans()                                                                                                               
+                                                	{                                                                                                                                                    
+                                                			ReportDataGrid grid = new ReportDataGrid();                                                                                                        
+                                                                                                                                                                                                      
+                                                		                                                                                                                                                    
+                                                			for (StudentEdPlan edPlan :c_edPlans)                                                                                                              
+                                                			{                                                                                                                                                  
+                                                				if ( m_Students.containsKey(edPlan.getStudentOid()))                                                                                              
+                                                				{                                                                                                                                                 
+                                                					int PhoneCalls =0;                                                                                                                               
+                                                					int Visits = 0;                                                                                                                                  
+                                                				boolean phoneFlag = false;                                                                                                                        
+                                                				boolean visitFlag = false;                                                                                                                        
+                                                				Collection<StudentEdPlanMeeting> Meetings =edPlan.getStudentEdPlanMeetings();                                                                     
+                                                				for (StudentEdPlanMeeting meeting: Meetings)                                                                                                      
+                                                				{                                                                                                                                                 
+                                                					if (meeting.getFieldB001() != null)                                                                                                              
+                                                					{                                                                                                                                                
+                                                					if (meeting.getFieldB001().equals(PHONE)) phoneFlag = true;                                                                                      
+                                                					if (meeting.getFieldB001().equals(HOME)) visitFlag = true;                                                                                       
+                                                					}                                                                                                                                                
+                                                				}                                                                                                                                                 
+                                                                                                                                                                                                      
+                                                				if (phoneFlag) PhoneCalls++;                                                                                                                      
+                                                				if (visitFlag) Visits++;                                                                                                                          
+                                                			String OfficerName = "";                                                                                                                           
+                                                			SisStudent student = m_Students.get(edPlan.getStudentOid());                                                                                       
+                                                			SisSchool school = null;                                                                                                                           
+                                                			                                                                                                                                                   
+                                                			                                                                                                                                                   
+                                                			if (edPlan.getStaffOid() != null && m_Officers.containsKey(edPlan.getStaffOid())) OfficerName = m_Officers.get(edPlan.getStaffOid()).getNameView();
+                                                			if ( m_Schools.containsKey(student.getSchoolOid()))  school = m_Schools.get(student.getSchoolOid());                                               
+                                                			grid.append();                                                                                                                                     
+                                                			grid.set(FIELD_OFFICER_NAME, OfficerName);                                                                                                         
+                                                			grid.set(FIELD_STUDENT, student);                                                                                                                  
+                                                			grid.set(FIELD_PHONECALL, PhoneCalls);                                                                                                             
+                                                			grid.set(FIELD_HOMEVISIT, Visits);                                                                                                                 
+                                                			grid.set(FIELD_SCHOOL, school.getName());                                                                                                          
+                                                			grid.set(FIELD_PLAN_DATE, edPlan.getEffectiveDate());                                                                                              
+                                                			grid.set(FIELD_DAYS, getTimeDiff(edPlan.getEffectiveDate()));                                                                                      
+                                                			}                                                                                                                                                  
+                                                		 }                                                                                                                                                  
+                                                		grid.beforeTop();                                                                                                                                   
+                                                		return grid;                                                                                                                                        
+                                                	}                                                                                                                                                    
+                                                	                                                                                                                                                     
+                                                	public static int getTimeDiff(PlainDate dateOne )                                                                                                    
+                                                	{                                                                                                                                                    
+                                                		long diff = 0;                                                                                                                                      
+                                                		PlainDate dateTwo = new PlainDate();                                                                                                                
+                                                		long timeDiff = Math.abs(dateOne.getTime() - dateTwo.getTime());                                                                                    
+                                                		diff = TimeUnit.MILLISECONDS.toDays(timeDiff);                                                                                                      
+                                                		Long A = Long.valueOf( diff);                                                                                                                       
+                                                		                                                                                                                                                    
+                                                		return A.intValue();                                                                                                                                
+                                                		}                                                                                                                                                   
+                                                }                                                                                                                                                     

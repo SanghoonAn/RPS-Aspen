@@ -1,0 +1,18 @@
+<!-- ******************************************************************* -->
+<!-- REPORT INPUT DEFINITIONS FOR THE "ATTENDANCE INTERVENTION PLANS - INCOMPLETE PLANS BY OFFICERS-->
+<!-- ******************************************************************* -->
+
+<tool-input allow-school-select="false" context="com.x2dev.sis.model.beans.SisStaff">
+
+ <!-- ********** -->
+ <!-- START DATE -->
+ <!-- ********** -->
+
+
+ <!-- **** -->
+ <!-- DATE -->
+ <!-- **** -->
+ <input name="StartDate" data-type="date" display-type="date" display-name="report.shared.startDate" required="false"  />
+ <input name="EndDate" data-type="date" display-type="date" display-name="End date" required="false" />
+
+</tool-input>
