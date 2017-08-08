@@ -11,7 +11,7 @@ l:  rmcnamee.contractor<br>
 p:  BigJack#8
 
 Once logged in, click on the Aspen SIS link to open the browser. <br><br>
-<b>#Important#  The default page opened bu clicking the link is the RPS Aspen PRODUCTION site.  Production site can be reached without the Citrix vpn.  Make sure not to confuse the production site with the dev/test environment.</b>
+<b>IMPORTANT: The default page opened bu clicking the link is the RPS Aspen PRODUCTION site.  Production site can be reached without the Citrix vpn.  Make sure not to confuse the production site with the dev/test environment.</b>
  
 So, once IE opens up and gives you a login for Aspen, replace the address with http://app-aspen-dev/aspenrep.<br>
 Below is my personal login to the aspenRep site. <br>
@@ -33,5 +33,12 @@ From one of the side tabs listed above, click on the entity to update or click "
 <h3>Java Development</h3>  
 Recommended development tool is Eclipse Mars.  It is free to download at https://eclipse.org/downloads/ 
 Once the Eclipse is installed, download and import the Aspen.war file.
+New Objects should be placed and developed under aspen-> Java Resources -> src ->aspen.
+Depending on the intended use of the object, it needs to inherit a proper parent object.
+Reports extend "ReportJavaSourceNet" store procedures should extend "ProcedureJavaSource" in most cases.  
 
+
+<h3>Format Definitions Development </h3>
+The format definitions are xml files generated from Ireport.  Version supported by Aspen are 1.0.2, 3.0.1 and 5.5.0.  
+<b>IMPORTANT: On the report details page, theres a field for Report Engine Version.  Version number on this field must match that of the report editor used to create the format definition file.  
 
