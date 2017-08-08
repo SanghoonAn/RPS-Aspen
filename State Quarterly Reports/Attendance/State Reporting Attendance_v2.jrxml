@@ -1,0 +1,2777 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="State Reporting Attendance_v2"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="782"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="StartDate" isForPrompting="false" class="java.util.Date"/>
+	<parameter name="EndDate" isForPrompting="false" class="java.util.Date"/>
+
+	<field name="School" class="java.lang.String"/>
+	<field name="AllAdaNum" class="java.math.BigDecimal"/>
+	<field name="ALLADAPER" class="java.math.BigDecimal"/>
+	<field name="DisAdaNum" class="java.math.BigDecimal"/>
+	<field name="DisAdaPer" class="java.math.BigDecimal"/>
+	<field name="EllAdaNum" class="java.math.BigDecimal"/>
+	<field name="EllAdaPer" class="java.math.BigDecimal"/>
+	<field name="HomAdaNum" class="java.math.BigDecimal"/>
+	<field name="HomAdaPer" class="java.math.BigDecimal"/>
+	<field name="AllAbsNum" class="java.lang.Integer"/>
+	<field name="AllAbsPer" class="java.math.BigDecimal"/>
+	<field name="DisAbsNum" class="java.lang.Integer"/>
+	<field name="DisAbsPer" class="java.math.BigDecimal"/>
+	<field name="EllAbsNum" class="java.lang.Integer"/>
+	<field name="EllAbsPer" class="java.math.BigDecimal"/>
+	<field name="HomAbsNum" class="java.lang.Integer"/>
+	<field name="HomAbsPer" class="java.math.BigDecimal"/>
+	<field name="AllTarNum" class="java.lang.Integer"/>
+	<field name="AllTarPer" class="java.math.BigDecimal"/>
+	<field name="DisTarNum" class="java.lang.Integer"/>
+	<field name="DisTarPer" class="java.math.BigDecimal"/>
+	<field name="EllTarNum" class="java.lang.Integer"/>
+	<field name="EllTarPer" class="java.math.BigDecimal"/>
+	<field name="HomTarNum" class="java.lang.Integer"/>
+	<field name="HomTarPer" class="java.math.BigDecimal"/>
+	<field name="AllUnex" class="java.lang.Integer"/>
+	<field name="AllEx" class="java.lang.Integer"/>
+	<field name="AllOs" class="java.lang.Integer"/>
+	<field name="DisUnex" class="java.lang.Integer"/>
+	<field name="DisEx" class="java.lang.Integer"/>
+	<field name="DisOs" class="java.lang.Integer"/>
+	<field name="EllUnex" class="java.lang.Integer"/>
+	<field name="EllEx" class="java.lang.Integer"/>
+	<field name="EllOs" class="java.lang.Integer"/>
+	<field name="HomUnex" class="java.lang.Integer"/>
+	<field name="HomEx" class="java.lang.Integer"/>
+	<field name="HomOs" class="java.lang.Integer"/>
+	<field name="AllIs" class="java.lang.Integer"/>
+	<field name="DisIs" class="java.lang.Integer"/>
+	<field name="EllIs" class="java.lang.Integer"/>
+	<field name="HomIs" class="java.lang.Integer"/>
+	<field name="AllMem" class="java.math.BigDecimal"/>
+	<field name="DisMem" class="java.math.BigDecimal"/>
+	<field name="EllMem" class="java.math.BigDecimal"/>
+	<field name="HomMem" class="java.math.BigDecimal"/>
+	<field name="AllAdaPerOss" class="java.math.BigDecimal"/>
+	<field name="DisAdaPerOss" class="java.math.BigDecimal"/>
+	<field name="EllAdaPerOss" class="java.math.BigDecimal"/>
+	<field name="HomAdaPerOss" class="java.math.BigDecimal"/>
+	<field name="All10" class="java.math.BigDecimal"/>
+	<field name="Dis10" class="java.math.BigDecimal"/>
+	<field name="Ell10" class="java.math.BigDecimal"/>
+	<field name="Hom10" class="java.math.BigDecimal"/>
+	<field name="All10Oss" class="java.math.BigDecimal"/>
+	<field name="Dis10Oss" class="java.math.BigDecimal"/>
+	<field name="Ell10Oss" class="java.math.BigDecimal"/>
+	<field name="Hom10Oss" class="java.math.BigDecimal"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="50"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="2"
+						width="782"
+						height="23"
+						key="staticText-15"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Virginia State Quarterly Reporting ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="16"
+						width="782"
+						height="23"
+						key="staticText-16"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Attendance]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="MM/dd/yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="280"
+						y="30"
+						width="100"
+						height="18"
+						key="textField-41"/>
+					<box></box>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$P{StartDate}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="MM/dd/yyyy" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="403"
+						y="30"
+						width="100"
+						height="18"
+						key="textField-42"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$P{EndDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="380"
+						y="30"
+						width="23"
+						height="18"
+						key="staticText-17"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[~]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="683"
+						y="16"
+						width="82"
+						height="16"
+						forecolor="#999999"
+						key="textField-43"
+						isRemoveLineWhenBlank="true"/>
+					<box></box>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Pages  "+  $V{PAGE_NUMBER}+ " of "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="765"
+						y="16"
+						width="15"
+						height="16"
+						forecolor="#999999"
+						key="textField-44"
+						isRemoveLineWhenBlank="true"/>
+					<box></box>
+					<textElement textAlignment="Right">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="108"  isSplitAllowed="true" >
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="573"
+						y="83"
+						width="25"
+						height="18"
+						key="rectangle-40"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="573"
+						y="65"
+						width="25"
+						height="18"
+						key="rectangle-39"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="573"
+						y="47"
+						width="25"
+						height="18"
+						key="rectangle-38"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="573"
+						y="29"
+						width="25"
+						height="18"
+						key="rectangle-37"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="513"
+						y="83"
+						width="30"
+						height="18"
+						key="rectangle-36"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="513"
+						y="65"
+						width="30"
+						height="18"
+						key="rectangle-35"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="513"
+						y="47"
+						width="30"
+						height="18"
+						key="rectangle-34"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="513"
+						y="29"
+						width="30"
+						height="18"
+						key="rectangle-33"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="445"
+						y="83"
+						width="33"
+						height="18"
+						key="rectangle-32"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="445"
+						y="65"
+						width="33"
+						height="18"
+						key="rectangle-31"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="445"
+						y="47"
+						width="33"
+						height="18"
+						key="rectangle-30"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="445"
+						y="29"
+						width="33"
+						height="18"
+						key="rectangle-29"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="374"
+						y="83"
+						width="34"
+						height="18"
+						key="rectangle-28"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="374"
+						y="65"
+						width="34"
+						height="18"
+						key="rectangle-27"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="374"
+						y="47"
+						width="34"
+						height="18"
+						key="rectangle-26"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="374"
+						y="29"
+						width="34"
+						height="18"
+						key="rectangle-25"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="340"
+						y="83"
+						width="34"
+						height="18"
+						key="rectangle-24"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="340"
+						y="65"
+						width="34"
+						height="18"
+						key="rectangle-23"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="340"
+						y="47"
+						width="34"
+						height="18"
+						key="rectangle-22"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="340"
+						y="29"
+						width="34"
+						height="18"
+						key="rectangle-21"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="306"
+						y="83"
+						width="34"
+						height="18"
+						key="rectangle-20"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="306"
+						y="65"
+						width="34"
+						height="18"
+						key="rectangle-19"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="306"
+						y="47"
+						width="34"
+						height="18"
+						key="rectangle-18"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="306"
+						y="29"
+						width="34"
+						height="18"
+						key="rectangle-17"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="271"
+						y="83"
+						width="35"
+						height="18"
+						key="rectangle-16"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="271"
+						y="65"
+						width="35"
+						height="18"
+						key="rectangle-15"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="271"
+						y="47"
+						width="35"
+						height="18"
+						key="rectangle-14"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="271"
+						y="29"
+						width="35"
+						height="18"
+						key="rectangle-13"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="237"
+						y="83"
+						width="34"
+						height="18"
+						key="rectangle-12"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="237"
+						y="65"
+						width="34"
+						height="18"
+						key="rectangle-11"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="237"
+						y="47"
+						width="34"
+						height="18"
+						key="rectangle-10"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="237"
+						y="29"
+						width="34"
+						height="18"
+						key="rectangle-9"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="133"
+						y="29"
+						width="33"
+						height="18"
+						key="rectangle-1"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="133"
+						y="47"
+						width="33"
+						height="18"
+						key="rectangle-2"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="133"
+						y="65"
+						width="33"
+						height="18"
+						key="rectangle-3"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="133"
+						y="83"
+						width="33"
+						height="18"
+						key="rectangle-4"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="166"
+						y="29"
+						width="35"
+						height="18"
+						key="rectangle-5"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="166"
+						y="47"
+						width="35"
+						height="18"
+						key="rectangle-6"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="166"
+						y="65"
+						width="35"
+						height="18"
+						key="rectangle-7"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="166"
+						y="83"
+						width="35"
+						height="18"
+						key="rectangle-8"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+</graphicElement>
+				</rectangle>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="0"
+						width="133"
+						height="29"
+						key="textField-1"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="7"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{School}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="133"
+						y="0"
+						width="33"
+						height="29"
+						key="staticText-2"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[ADA #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="166"
+						y="0"
+						width="35"
+						height="29"
+						key="staticText-3"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[ADA%]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="###0.0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="133"
+						y="29"
+						width="33"
+						height="18"
+						key="textField"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{AllAdaNum}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="29"
+						width="133"
+						height="18"
+						key="staticText-1"/>
+					<box leftPadding="4">					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<text><![CDATA[All Students]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="166"
+						y="29"
+						width="35"
+						height="18"
+						key="textField-2"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{ALLADAPER}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0.0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="133"
+						y="47"
+						width="33"
+						height="18"
+						key="textField-3"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{DisAdaNum}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="47"
+						width="133"
+						height="18"
+						key="staticText-4"/>
+					<box leftPadding="4">					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<text><![CDATA[Students with Disability]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="166"
+						y="47"
+						width="35"
+						height="18"
+						key="textField-4"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{DisAdaPer}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0.0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="133"
+						y="65"
+						width="33"
+						height="18"
+						key="textField-5"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{EllAdaNum}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="65"
+						width="133"
+						height="18"
+						key="staticText-5"/>
+					<box leftPadding="4">					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<text><![CDATA[Limited English Proficient]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="166"
+						y="65"
+						width="35"
+						height="18"
+						key="textField-6"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{EllAdaPer}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0.0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="133"
+						y="83"
+						width="33"
+						height="18"
+						key="textField-7"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{HomAdaNum}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="83"
+						width="133"
+						height="18"
+						key="staticText-6"/>
+					<box leftPadding="4">					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="7"/>
+					</textElement>
+				<text><![CDATA[Homeless]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="166"
+						y="83"
+						width="35"
+						height="18"
+						key="textField-8"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{HomAdaPer}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="237"
+						y="0"
+						width="34"
+						height="29"
+						key="staticText-7"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[5+ Abs #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="271"
+						y="0"
+						width="35"
+						height="29"
+						key="staticText-8"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[5+ Abs %]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="237"
+						y="29"
+						width="34"
+						height="18"
+						key="textField-9"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{AllAbsNum}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="271"
+						y="29"
+						width="35"
+						height="18"
+						key="textField-10"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{AllAbsPer}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="237"
+						y="47"
+						width="34"
+						height="18"
+						key="textField-11"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{DisAbsNum}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="271"
+						y="47"
+						width="35"
+						height="18"
+						key="textField-12"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{DisAbsPer}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="237"
+						y="65"
+						width="34"
+						height="18"
+						key="textField-13"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{EllAbsNum}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="271"
+						y="65"
+						width="35"
+						height="18"
+						key="textField-14"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{EllAbsPer}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="237"
+						y="83"
+						width="34"
+						height="18"
+						key="textField-15"/>
+					<box leftPadding="2">					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{HomAbsNum}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="271"
+						y="83"
+						width="35"
+						height="18"
+						key="textField-16"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{HomAbsPer}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="306"
+						y="0"
+						width="34"
+						height="29"
+						key="staticText-9"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[5+        Tardy #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="340"
+						y="0"
+						width="34"
+						height="29"
+						key="staticText-10"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[5+         Tardy %]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="306"
+						y="29"
+						width="34"
+						height="18"
+						key="textField-17"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{AllTarNum}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="340"
+						y="29"
+						width="34"
+						height="18"
+						key="textField-18"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{AllTarPer}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="306"
+						y="47"
+						width="34"
+						height="18"
+						key="textField-19"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{DisTarNum}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="340"
+						y="47"
+						width="34"
+						height="18"
+						key="textField-20"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{DisTarPer}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="306"
+						y="65"
+						width="34"
+						height="18"
+						key="textField-21"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{EllTarNum}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="340"
+						y="65"
+						width="34"
+						height="18"
+						key="textField-22"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{EllTarPer}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="306"
+						y="83"
+						width="34"
+						height="18"
+						key="textField-23"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{HomTarNum}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="340"
+						y="83"
+						width="34"
+						height="18"
+						key="textField-24"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{HomTarPer}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="374"
+						y="0"
+						width="34"
+						height="29"
+						key="staticText-11"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[# Excused]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="374"
+						y="29"
+						width="34"
+						height="18"
+						key="textField-25"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{AllEx}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="374"
+						y="47"
+						width="34"
+						height="18"
+						key="textField-26"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{DisEx}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="374"
+						y="65"
+						width="34"
+						height="18"
+						key="textField-27"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{EllEx}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="374"
+						y="83"
+						width="34"
+						height="18"
+						key="textField-28"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{HomEx}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="445"
+						y="0"
+						width="33"
+						height="29"
+						key="staticText-12"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[# Unex]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="445"
+						y="29"
+						width="33"
+						height="18"
+						key="textField-29"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{AllUnex}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="445"
+						y="47"
+						width="33"
+						height="18"
+						key="textField-30"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{DisUnex}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="445"
+						y="65"
+						width="33"
+						height="18"
+						key="textField-31"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{EllUnex}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="445"
+						y="83"
+						width="33"
+						height="18"
+						key="textField-32"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{HomUnex}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="513"
+						y="0"
+						width="30"
+						height="29"
+						key="staticText-13"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[# OSS]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="513"
+						y="29"
+						width="30"
+						height="18"
+						key="textField-33"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{AllOs}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="513"
+						y="47"
+						width="30"
+						height="18"
+						key="textField-34"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{DisOs}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="513"
+						y="65"
+						width="30"
+						height="18"
+						key="textField-35"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{EllOs}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="513"
+						y="83"
+						width="30"
+						height="18"
+						key="textField-36"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{HomOs}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="573"
+						y="0"
+						width="25"
+						height="29"
+						key="staticText-14"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[# ISS]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="573"
+						y="29"
+						width="25"
+						height="18"
+						key="textField-37"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{AllIs}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="573"
+						y="47"
+						width="25"
+						height="18"
+						key="textField-38"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{DisIs}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="573"
+						y="65"
+						width="25"
+						height="18"
+						key="textField-39"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{EllIs}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="###0" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="573"
+						y="83"
+						width="25"
+						height="18"
+						key="textField-40"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[$F{HomIs}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="408"
+						y="83"
+						width="37"
+						height="18"
+						key="rectangle-41"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="408"
+						y="65"
+						width="37"
+						height="18"
+						key="rectangle-42"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="408"
+						y="47"
+						width="37"
+						height="18"
+						key="rectangle-43"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="408"
+						y="29"
+						width="37"
+						height="18"
+						key="rectangle-44"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="408"
+						y="0"
+						width="37"
+						height="29"
+						key="staticText-18"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[% Excused]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="408"
+						y="29"
+						width="37"
+						height="18"
+						key="textField-45"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{AllMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{AllEx}.intValue())).divide($F{AllMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="408"
+						y="47"
+						width="37"
+						height="18"
+						key="textField-46"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{DisMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{DisEx}.intValue())).divide($F{DisMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="408"
+						y="65"
+						width="37"
+						height="18"
+						key="textField-47"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{EllMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{EllEx}.intValue())).divide($F{EllMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="408"
+						y="83"
+						width="37"
+						height="18"
+						key="textField-48"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{HomMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{HomEx}.intValue())).divide($F{HomMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="478"
+						y="83"
+						width="35"
+						height="18"
+						key="rectangle-45"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="478"
+						y="65"
+						width="35"
+						height="18"
+						key="rectangle-46"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="478"
+						y="47"
+						width="35"
+						height="18"
+						key="rectangle-47"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="478"
+						y="29"
+						width="35"
+						height="18"
+						key="rectangle-48"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="478"
+						y="0"
+						width="35"
+						height="29"
+						key="staticText-19"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[% Unex]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="478"
+						y="29"
+						width="35"
+						height="18"
+						key="textField-49"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{AllMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{AllUnex}.intValue())).divide($F{AllMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="478"
+						y="47"
+						width="35"
+						height="18"
+						key="textField-50"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{DisMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{DisUnex}.intValue())).divide($F{DisMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="478"
+						y="65"
+						width="35"
+						height="18"
+						key="textField-51"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{EllMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{EllUnex}.intValue())).divide($F{EllMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="478"
+						y="83"
+						width="35"
+						height="18"
+						key="textField-52"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{HomMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{HomUnex}.intValue())).divide($F{HomMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="543"
+						y="83"
+						width="30"
+						height="18"
+						key="rectangle-49"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="543"
+						y="65"
+						width="30"
+						height="18"
+						key="rectangle-50"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="543"
+						y="47"
+						width="30"
+						height="18"
+						key="rectangle-51"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="543"
+						y="29"
+						width="30"
+						height="18"
+						key="rectangle-52"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="543"
+						y="0"
+						width="30"
+						height="29"
+						key="staticText-20"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[% OSS]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="543"
+						y="29"
+						width="30"
+						height="18"
+						key="textField-53"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{AllMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{AllOs}.intValue())).divide($F{AllMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="543"
+						y="47"
+						width="30"
+						height="18"
+						key="textField-54"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{DisMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{DisOs}.intValue())).divide($F{DisMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="543"
+						y="65"
+						width="30"
+						height="18"
+						key="textField-55"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{EllMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{EllOs}.intValue())).divide($F{EllMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="543"
+						y="83"
+						width="30"
+						height="18"
+						key="textField-56"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{HomMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{HomOs}.intValue())).divide($F{HomMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="598"
+						y="83"
+						width="26"
+						height="18"
+						key="rectangle-53"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="598"
+						y="65"
+						width="26"
+						height="18"
+						key="rectangle-54"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="598"
+						y="47"
+						width="26"
+						height="18"
+						key="rectangle-55"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="598"
+						y="29"
+						width="26"
+						height="18"
+						key="rectangle-56"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="598"
+						y="0"
+						width="26"
+						height="29"
+						key="staticText-21"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[% ISS]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="598"
+						y="29"
+						width="26"
+						height="18"
+						key="textField-57"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{AllMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{AllIs}.intValue())).divide($F{AllMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="598"
+						y="47"
+						width="26"
+						height="18"
+						key="textField-58"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{DisMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{DisIs}.intValue())).divide($F{DisMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="598"
+						y="65"
+						width="26"
+						height="18"
+						key="textField-59"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{EllMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{EllIs}.intValue())).divide($F{EllMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="598"
+						y="83"
+						width="26"
+						height="18"
+						key="textField-60"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{HomMem}.compareTo( BigDecimal.ZERO)== 0?BigDecimal.ZERO :(new BigDecimal($F{HomIs}.intValue())).divide($F{HomMem} ,4,3)]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="624"
+						y="83"
+						width="42"
+						height="18"
+						key="rectangle-61"
+						isPrintWhenDetailOverflows="true"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="624"
+						y="65"
+						width="42"
+						height="18"
+						key="rectangle-62"
+						isPrintWhenDetailOverflows="true"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="624"
+						y="47"
+						width="42"
+						height="18"
+						key="rectangle-63"
+						isPrintWhenDetailOverflows="true"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="624"
+						y="29"
+						width="42"
+						height="18"
+						key="rectangle-64"
+						isPrintWhenDetailOverflows="true"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="624"
+						y="0"
+						width="42"
+						height="29"
+						key="staticText-23"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[%   Missing 10% of School year]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="624"
+						y="29"
+						width="42"
+						height="18"
+						key="textField-65"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{All10}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="624"
+						y="47"
+						width="42"
+						height="18"
+						key="textField-66"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[ $F{Dis10}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="624"
+						y="65"
+						width="42"
+						height="18"
+						key="textField-67"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{Ell10}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="624"
+						y="83"
+						width="42"
+						height="18"
+						key="textField-68"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{Hom10}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="666"
+						y="83"
+						width="47"
+						height="18"
+						key="rectangle-65"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="666"
+						y="65"
+						width="47"
+						height="18"
+						key="rectangle-66"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="666"
+						y="47"
+						width="47"
+						height="18"
+						key="rectangle-67"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="666"
+						y="29"
+						width="47"
+						height="18"
+						key="rectangle-68"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="666"
+						y="0"
+						width="47"
+						height="29"
+						key="staticText-24"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[% Missing 10% of School Year (Exclude OSS)]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="666"
+						y="29"
+						width="47"
+						height="18"
+						key="textField-69"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{All10Oss}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="666"
+						y="47"
+						width="47"
+						height="18"
+						key="textField-70"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{Dis10Oss}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="666"
+						y="65"
+						width="47"
+						height="18"
+						key="textField-71"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{Ell10Oss}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="666"
+						y="83"
+						width="47"
+						height="18"
+						key="textField-72"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{Hom10Oss}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="713"
+						y="83"
+						width="69"
+						height="18"
+						key="rectangle-69"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="713"
+						y="65"
+						width="69"
+						height="18"
+						key="rectangle-70"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="713"
+						y="47"
+						width="69"
+						height="18"
+						key="rectangle-71"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="713"
+						y="29"
+						width="69"
+						height="18"
+						key="rectangle-72"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="713"
+						y="0"
+						width="69"
+						height="29"
+						key="staticText-25"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[Difference between missing 10%       &    missing 10% (excl OSS)]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="713"
+						y="29"
+						width="69"
+						height="18"
+						key="textField-73"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[ $F{All10}.subtract( $F{All10Oss} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="713"
+						y="47"
+						width="69"
+						height="18"
+						key="textField-74"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[ $F{Dis10}.subtract(  $F{Dis10Oss})]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="713"
+						y="65"
+						width="69"
+						height="18"
+						key="textField-75"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{Ell10}.subtract($F{Ell10Oss} )]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="713"
+						y="83"
+						width="69"
+						height="18"
+						key="textField-76"/>
+					<box leftPadding="2">					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[ $F{Hom10}.subtract($F{Hom10Oss} )]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="201"
+						y="29"
+						width="36"
+						height="18"
+						key="rectangle-73"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="201"
+						y="47"
+						width="36"
+						height="18"
+						key="rectangle-74"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="201"
+						y="65"
+						width="36"
+						height="18"
+						key="rectangle-75"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						mode="Transparent"
+						x="201"
+						y="83"
+						width="36"
+						height="18"
+						key="rectangle-76"
+						isPrintRepeatedValues="false"/>
+					<graphicElement stretchType="NoStretch">
+					<pen lineWidth="0.25"/>
+</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="201"
+						y="0"
+						width="36"
+						height="29"
+						key="staticText-26"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="6"/>
+					</textElement>
+				<text><![CDATA[ADA%  Excluding OSS]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="201"
+						y="29"
+						width="36"
+						height="18"
+						key="textField-77"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{AllAdaPerOss}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="201"
+						y="47"
+						width="36"
+						height="18"
+						key="textField-78"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{DisAdaPerOss}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="201"
+						y="65"
+						width="36"
+						height="18"
+						key="textField-79"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{EllAdaPerOss}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="#,##0.00 %" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="201"
+						y="83"
+						width="36"
+						height="18"
+						key="textField-80"/>
+					<box leftPadding="2">					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font size="6"/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{HomAdaPerOss}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
