@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tool-bundle create-date="2016-04-06">
+  <procedures>
+    <procedure-definition id="RPS-PR-PNS" name="Populate Next School" category="Student" javasource-file="NextSchoolSetup.java" weight="1">
+      <node key="student.std.list" org1-view="true" school-view="true" />
+    </procedure-definition>
+  </procedures>
+</tool-bundle>
+

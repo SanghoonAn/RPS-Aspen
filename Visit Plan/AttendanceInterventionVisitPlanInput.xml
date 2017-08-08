@@ -1,0 +1,23 @@
+<!-- ******************************************************************* -->
+<!-- REPORT INPUT DEFINITIONS FOR THE "STUDENT LABEL" AND RELATED REPORTS -->
+<!-- ******************************************************************* -->
+
+<tool-input allow-school-select="true" context="com.x2dev.sis.model.beans.SisStudent">
+
+ <!-- ************** -->
+ <!-- SELECT OPTIONS -->
+ <!-- ************** -->
+
+ <input name="queryBy" data-type="integer" display-type="select" display-name="report.shared.query">
+  <option value="0" display-name="report.shared.query.currentSelection" context-dependent="true"/> 
+ </input> 
+ <!-- ************ -->
+ <!-- SORT OPTIONS -->
+ <!-- ************ -->
+
+ <input name="sort" data-type="integer" display-type="select" display-name="report.shared.sort">
+  <option value="0" display-name="report.shared.sort.currentSort" context-dependent="true"/>
+  <option value="1" display-name="report.shared.sort.name"/> 
+  </input>
+ 
+</tool-input><!-- ++++ Upgraded by PhoenixUpgradeProcedure ++++ on Mon Jan 02 15:46:44 EST 2012 -->

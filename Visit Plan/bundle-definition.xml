@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tool-bundle create-date="2015-07-27">
+  <reports>
+    <report-definition id="AIVP-001" name="Attendance Intervention Visit Plan" category="Attendance" javasource-file="Attendance_intervention_visit_plan_report.java" input-file="AttendanceInterventionVisitPlanInput.xml" weight="1" design-file="AttendanceInterventionVisitPlan.jrxml" engine-version="3.0.1" sequence-number="0">
+      <node key="student.std.list" org1-view="true" school-view="true" />
+      <node key="student.std.list.detail" org1-view="true" school-view="true" />
+      <node key="global.common.table.sep" org1-view="true" school-view="true" />
+      <node key="global.common.table.sep.detail" org1-view="true" school-view="true" />
+    </report-definition>
+  </reports>
+</tool-bundle>
+

@@ -1,0 +1,2939 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="Attendance_intervention_plan"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="longDateFormat" isForPrompting="false" class="java.text.DateFormat"/>
+
+	<field name="student" class="com.x2dev.sis.model.beans.SisStudent"/>
+	<field name="school" class="com.x2dev.sis.model.beans.SisSchool"/>
+	<field name="contact1" class="com.x2dev.sis.model.beans.SisPerson"/>
+	<field name="contact2" class="com.x2dev.sis.model.beans.SisPerson"/>
+	<field name="contact3" class="com.x2dev.sis.model.beans.SisPerson"/>
+	<field name="studentAddress" class="com.x2dev.sis.model.beans.SisAddress"/>
+	<field name="edPlan" class="com.x2dev.sis.model.beans.StudentEdPlan"/>
+	<field name="AbsencesSub" class="java.io.InputStream"/>
+	<field name="absences" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="meetingSub" class="java.io.InputStream"/>
+	<field name="edPlanMeetings" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<field name="status1" class="java.lang.String"/>
+	<field name="status2" class="java.lang.String"/>
+	<field name="officerName" class="java.lang.String"/>
+
+	<variable name="date" class="java.lang.String" resetType="None" calculation="Nothing">
+		<variableExpression><![CDATA[$P{longDateFormat}.format(new java.util.Date(System.currentTimeMillis()))]]></variableExpression>
+	</variable>
+
+		<group  name="StudentGroup" >
+			<groupExpression><![CDATA[$F{student}]]></groupExpression>
+			<groupHeader>
+			<band height="680"  isSplitAllowed="true" >
+				<rectangle>
+					<reportElement
+						x="8"
+						y="49"
+						width="7"
+						height="8"
+						key="rectangle-8"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="8"
+						y="34"
+						width="7"
+						height="8"
+						key="rectangle-7"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="8"
+						y="5"
+						width="7"
+						height="8"
+						key="rectangle-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="8"
+						y="19"
+						width="7"
+						height="8"
+						key="rectangle-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="21"
+						y="2"
+						width="62"
+						height="13"
+						key="staticText-4"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[NO SHOW]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="21"
+						y="17"
+						width="75"
+						height="13"
+						key="staticText-5"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[5 DAY PLAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="21"
+						y="32"
+						width="62"
+						height="13"
+						key="staticText-6"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[W9]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="21"
+						y="47"
+						width="62"
+						height="13"
+						key="staticText-7"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[OTHER:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="243"
+						y="2"
+						width="70"
+						height="13"
+						key="staticText-8"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[School:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="243"
+						y="20"
+						width="117"
+						height="13"
+						key="staticText-9"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Attendance Officer:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="243"
+						y="38"
+						width="83"
+						height="13"
+						key="staticText-10"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Today's Date:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="344"
+						y="16"
+						width="186"
+						height="0"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="344"
+						y="32"
+						width="186"
+						height="0"
+						key="line-2"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="344"
+						y="50"
+						width="186"
+						height="0"
+						key="line-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="79"
+						width="21"
+						height="214"
+						forecolor="#000000"
+						backcolor="#CCCCCC"
+						key="staticText-12"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[PRIMARY CONTACT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="308"
+						width="21"
+						height="120"
+						forecolor="#000000"
+						backcolor="#CCCCCC"
+						key="staticText-14"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[CONTACT #1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="434"
+						width="21"
+						height="119"
+						forecolor="#000000"
+						backcolor="#CCCCCC"
+						key="staticText-18"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[CONTACT #2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="559"
+						width="21"
+						height="120"
+						forecolor="#000000"
+						backcolor="#CCCCCC"
+						key="staticText-19"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[CONTACT #3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="27"
+						y="87"
+						width="89"
+						height="13"
+						key="staticText-20"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Student's Name:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="26"
+						y="116"
+						width="89"
+						height="13"
+						key="staticText-21"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Date of Birth:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="27"
+						y="139"
+						width="89"
+						height="13"
+						key="staticText-22"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Ethnicity:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="27"
+						y="162"
+						width="94"
+						height="13"
+						key="staticText-23"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Student's Address:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="27"
+						y="189"
+						width="101"
+						height="27"
+						key="staticText-24"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Parent/Guardian's Name:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="27"
+						y="221"
+						width="88"
+						height="31"
+						key="staticText-25"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Telephone Number(s):]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="27"
+						y="259"
+						width="101"
+						height="31"
+						key="staticText-26"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Updated Contact Information:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="99"
+						width="154"
+						height="0"
+						key="line-4"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="291"
+						y="99"
+						width="154"
+						height="0"
+						key="line-5"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="458"
+						y="99"
+						width="72"
+						height="0"
+						key="line-6"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="162"
+						y="99"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-27"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Last]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="326"
+						y="99"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-28"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[First]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="458"
+						y="99"
+						width="70"
+						height="13"
+						forecolor="#999999"
+						key="staticText-29"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Middle Initial]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="129"
+						width="115"
+						height="0"
+						key="line-7"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="152"
+						width="115"
+						height="0"
+						key="line-8"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="175"
+						width="216"
+						height="0"
+						key="line-9"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="358"
+						y="175"
+						width="76"
+						height="0"
+						key="line-10"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="445"
+						y="175"
+						width="85"
+						height="0"
+						key="line-11"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="196"
+						y="175"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-30"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Street]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="362"
+						y="175"
+						width="65"
+						height="13"
+						forecolor="#999999"
+						key="staticText-31"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Apt. #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="453"
+						y="175"
+						width="65"
+						height="13"
+						forecolor="#999999"
+						key="staticText-32"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Zip Code]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="211"
+						width="139"
+						height="0"
+						key="line-12"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="293"
+						y="198"
+						width="121"
+						height="13"
+						key="staticText-33"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[Parent/Guardian's DOB:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="415"
+						y="211"
+						width="115"
+						height="0"
+						key="line-13"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="243"
+						width="402"
+						height="0"
+						forecolor="#999999"
+						key="line-14"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="147"
+						y="242"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-34"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="286"
+						y="243"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-35"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="423"
+						y="243"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-36"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 3]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="255"
+						y="116"
+						width="46"
+						height="13"
+						key="staticText-37"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[Age:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="291"
+						y="129"
+						width="84"
+						height="0"
+						key="line-15"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="388"
+						y="116"
+						width="46"
+						height="13"
+						key="staticText-38"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[Gender:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="313"
+						y="152"
+						width="91"
+						height="0"
+						key="line-16"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="255"
+						y="139"
+						width="59"
+						height="13"
+						key="staticText-41"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[Student ID:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="458"
+						y="152"
+						width="72"
+						height="0"
+						key="line-17"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="423"
+						y="139"
+						width="34"
+						height="13"
+						key="staticText-42"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[Grade:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="344"
+						y="2"
+						width="186"
+						height="18"
+						key="textField-1"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{school}.getName()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="87"
+						width="154"
+						height="14"
+						key="textField-2"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getLastName()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="291"
+						y="87"
+						width="154"
+						height="14"
+						key="textField-3"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getFirstName()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="458"
+						y="87"
+						width="72"
+						height="14"
+						key="textField-4"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[String.valueOf( $F{student}.getPerson().getMiddleName().charAt(0))]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="116"
+						width="108"
+						height="13"
+						key="textField-6"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getDob().toString()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="286"
+						y="116"
+						width="50"
+						height="13"
+						key="textField-7"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Integer"><![CDATA[Integer.valueOf(  $F{student}.getPerson().getAge())]]></textFieldExpression>
+				</textField>
+				<line direction="TopDown">
+					<reportElement
+						x="427"
+						y="129"
+						width="103"
+						height="0"
+						key="line-18"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="445"
+						y="116"
+						width="50"
+						height="13"
+						key="textField-8"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="10"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getGenderCode()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="139"
+						width="123"
+						height="17"
+						key="textField-9"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getRaceView()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="313"
+						y="139"
+						width="91"
+						height="17"
+						key="textField-10"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getLocalId()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="458"
+						y="139"
+						width="72"
+						height="17"
+						key="textField-11"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getGradeLevel()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="162"
+						width="216"
+						height="17"
+						key="textField-12"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getPhysicalAddress().getAddressLine01()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="360"
+						y="162"
+						width="64"
+						height="17"
+						key="textField-13"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getPhysicalAddress().getAddressLine02()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="198"
+						width="139"
+						height="17"
+						key="textField-14"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact1}.getNameView()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="415"
+						y="198"
+						width="115"
+						height="17"
+						key="textField-15"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact1}.getDob().toString()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="230"
+						width="127"
+						height="14"
+						key="textField-16"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getPhone01()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="267"
+						y="230"
+						width="127"
+						height="14"
+						key="textField-17"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getPhone02()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="404"
+						y="230"
+						width="127"
+						height="14"
+						key="textField-18"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getPhone03()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="453"
+						y="162"
+						width="64"
+						height="17"
+						key="textField-19"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getPerson().getPhysicalAddress().getPostalCode()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="27"
+						y="324"
+						width="89"
+						height="13"
+						key="staticText-44"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Contact's Name:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="337"
+						width="173"
+						height="0"
+						key="line-19"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="313"
+						y="311"
+						width="91"
+						height="29"
+						key="staticText-45"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[Relationship to Student:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="404"
+						y="337"
+						width="126"
+						height="0"
+						key="line-20"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="27"
+						y="353"
+						width="94"
+						height="13"
+						key="staticText-46"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Contact's Address:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="366"
+						width="216"
+						height="0"
+						key="line-21"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="358"
+						y="366"
+						width="76"
+						height="0"
+						key="line-22"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="445"
+						y="366"
+						width="85"
+						height="0"
+						key="line-23"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="196"
+						y="366"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-47"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Street]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="362"
+						y="366"
+						width="65"
+						height="13"
+						forecolor="#999999"
+						key="staticText-48"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Apt. #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="453"
+						y="366"
+						width="65"
+						height="13"
+						forecolor="#999999"
+						key="staticText-49"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Zip Code]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="353"
+						width="216"
+						height="17"
+						key="textField-20"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact1}. getPhysicalAddress().getAddressLine01()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="360"
+						y="353"
+						width="64"
+						height="17"
+						key="textField-21"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact1}.getPhysicalAddress().getAddressLine02()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="453"
+						y="353"
+						width="64"
+						height="17"
+						key="textField-22"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact1}.getPhysicalAddress().getPostalCode()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="27"
+						y="378"
+						width="101"
+						height="31"
+						key="staticText-50"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Telephone Number(s):]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="400"
+						width="402"
+						height="0"
+						key="line-24"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="147"
+						y="399"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-51"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="286"
+						y="400"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-52"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="423"
+						y="400"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-53"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 3]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="387"
+						width="127"
+						height="14"
+						key="textField-23"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact1}.getPhone01()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="267"
+						y="387"
+						width="127"
+						height="14"
+						key="textField-24"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact1}.getPhone02()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="404"
+						y="387"
+						width="127"
+						height="14"
+						key="textField-25"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact1}.getPhone03()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="324"
+						width="154"
+						height="14"
+						key="textField-26"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact1}.getNameView()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="404"
+						y="324"
+						width="126"
+						height="14"
+						key="textField-27"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getContact1().getRelationshipCode()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="27"
+						y="449"
+						width="89"
+						height="13"
+						key="staticText-54"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Contact's Name:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="462"
+						width="173"
+						height="0"
+						key="line-25"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="313"
+						y="436"
+						width="91"
+						height="29"
+						key="staticText-55"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[Relationship to Student:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="404"
+						y="462"
+						width="126"
+						height="0"
+						key="line-26"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="27"
+						y="478"
+						width="94"
+						height="13"
+						key="staticText-56"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Contact's Address:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="491"
+						width="216"
+						height="0"
+						key="line-27"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="358"
+						y="491"
+						width="76"
+						height="0"
+						key="line-28"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="445"
+						y="491"
+						width="85"
+						height="0"
+						key="line-29"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="196"
+						y="491"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-57"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Street]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="362"
+						y="491"
+						width="65"
+						height="13"
+						forecolor="#999999"
+						key="staticText-58"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Apt. #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="453"
+						y="491"
+						width="65"
+						height="13"
+						forecolor="#999999"
+						key="staticText-59"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Zip Code]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="478"
+						width="216"
+						height="17"
+						key="textField-28"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact2}. getPhysicalAddress().getAddressLine01()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="360"
+						y="478"
+						width="64"
+						height="17"
+						key="textField-29"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact2}.getPhysicalAddress().getAddressLine02()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="453"
+						y="478"
+						width="64"
+						height="17"
+						key="textField-30"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact2}.getPhysicalAddress().getPostalCode()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="27"
+						y="503"
+						width="101"
+						height="31"
+						key="staticText-60"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Telephone Number(s):]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="525"
+						width="402"
+						height="0"
+						key="line-30"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="147"
+						y="524"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-61"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="286"
+						y="525"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-62"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="423"
+						y="525"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-63"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 3]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="512"
+						width="127"
+						height="14"
+						key="textField-31"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact2}.getPhone01()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="267"
+						y="512"
+						width="127"
+						height="14"
+						key="textField-32"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact2}.getPhone02()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="404"
+						y="512"
+						width="127"
+						height="14"
+						key="textField-33"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact2}.getPhone03()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="449"
+						width="154"
+						height="14"
+						key="textField-34"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact2}.getNameView()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="404"
+						y="449"
+						width="126"
+						height="14"
+						key="textField-35"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getContact2().getRelationshipCode()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="27"
+						y="575"
+						width="89"
+						height="13"
+						key="staticText-64"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Contact's Name:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="588"
+						width="173"
+						height="0"
+						key="line-31"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="313"
+						y="562"
+						width="91"
+						height="29"
+						key="staticText-65"/>
+					<box></box>
+					<textElement textAlignment="Left">
+						<font/>
+					</textElement>
+				<text><![CDATA[Relationship to Student:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="404"
+						y="588"
+						width="126"
+						height="0"
+						key="line-32"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="27"
+						y="604"
+						width="94"
+						height="13"
+						key="staticText-66"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Contact's Address:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="617"
+						width="216"
+						height="0"
+						key="line-33"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="358"
+						y="617"
+						width="76"
+						height="0"
+						key="line-34"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="445"
+						y="617"
+						width="85"
+						height="0"
+						key="line-35"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="196"
+						y="617"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-67"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Street]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="362"
+						y="617"
+						width="65"
+						height="13"
+						forecolor="#999999"
+						key="staticText-68"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Apt. #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="453"
+						y="617"
+						width="65"
+						height="13"
+						forecolor="#999999"
+						key="staticText-69"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Zip Code]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="604"
+						width="216"
+						height="17"
+						key="textField-36"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact3}. getPhysicalAddress().getAddressLine01()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="360"
+						y="604"
+						width="64"
+						height="17"
+						key="textField-37"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact3}.getPhysicalAddress().getAddressLine02()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="453"
+						y="604"
+						width="64"
+						height="17"
+						key="textField-38"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact3}.getPhysicalAddress().getPostalCode()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="27"
+						y="629"
+						width="101"
+						height="31"
+						key="staticText-70"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Telephone Number(s):]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="128"
+						y="651"
+						width="402"
+						height="0"
+						key="line-36"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="147"
+						y="650"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-71"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="286"
+						y="651"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-72"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 2]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="423"
+						y="651"
+						width="89"
+						height="13"
+						forecolor="#999999"
+						key="staticText-73"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Phone 3]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="638"
+						width="127"
+						height="14"
+						key="textField-39"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact3}.getPhone01()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="267"
+						y="638"
+						width="127"
+						height="14"
+						key="textField-40"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact3}.getPhone02()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="404"
+						y="638"
+						width="127"
+						height="14"
+						key="textField-41"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact3}.getPhone03()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="128"
+						y="575"
+						width="154"
+						height="14"
+						key="textField-42"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{contact3}.getNameView()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="404"
+						y="575"
+						width="126"
+						height="14"
+						key="textField-43"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getContact3().getRelationshipCode()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="292"
+						width="535"
+						height="16"
+						forecolor="#FFFFFF"
+						backcolor="#000000"
+						key="staticText-13"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica" isBold="true"/>
+					</textElement>
+				<text><![CDATA[EMERGENCY CONTACT INFORMATION]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="0"
+						y="428"
+						width="535"
+						height="5"
+						forecolor="#000000"
+						backcolor="#000000"
+						key="rectangle-5"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<rectangle>
+					<reportElement
+						x="0"
+						y="553"
+						width="535"
+						height="5"
+						forecolor="#000000"
+						backcolor="#000000"
+						key="rectangle-6"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="62"
+						width="535"
+						height="16"
+						forecolor="#FFFFFF"
+						backcolor="#000000"
+						key="staticText-11"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica" isBold="true"/>
+					</textElement>
+				<text><![CDATA[STUDENT DEMOGRAPHIC INFORMATION]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="9"
+						y="4"
+						width="12"
+						height="15"
+						key="staticText-79">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldB001().equals("No show"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Transparent"
+						x="9"
+						y="18"
+						width="12"
+						height="14"
+						key="staticText-80"
+						isPrintInFirstWholeBand="true">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldB001().equals("5 day plan"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="9"
+						y="33"
+						width="12"
+						height="16"
+						key="staticText-81">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldB001().equals("W9"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="9"
+						y="48"
+						width="12"
+						height="12"
+						key="staticText-82">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldB001().equals("Other"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="344"
+						y="19"
+						width="186"
+						height="13"
+						key="textField-45"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{officerName}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="344"
+						y="37"
+						width="186"
+						height="13"
+						key="textField-46"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$V{date}]]></textFieldExpression>
+				</textField>
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="716"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="500"
+						width="535"
+						height="16"
+						forecolor="#FFFFFF"
+						backcolor="#000000"
+						key="staticText-83"
+						positionType="Float"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica" isBold="true"/>
+					</textElement>
+				<text><![CDATA[SIGNATURES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="335"
+						width="535"
+						height="16"
+						forecolor="#FFFFFF"
+						backcolor="#000000"
+						key="staticText-84"
+						positionType="Float"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica" isBold="true"/>
+					</textElement>
+				<text><![CDATA[INTERVENTION PLAN SERVICES AND REFERRALS]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="15"
+						y="359"
+						width="7"
+						height="8"
+						key="rectangle-9"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="28"
+						y="356"
+						width="108"
+						height="27"
+						key="staticText-85"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Child Care Services (AHS/GWHS/JMHS)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="16"
+						y="358"
+						width="12"
+						height="15"
+						key="staticText-86"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA003().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="202"
+						y="358"
+						width="7"
+						height="8"
+						key="rectangle-10"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="215"
+						y="355"
+						width="108"
+						height="27"
+						key="staticText-87"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Parent Liaison (FACE)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="203"
+						y="357"
+						width="12"
+						height="15"
+						key="staticText-88"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA008().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="404"
+						y="359"
+						width="7"
+						height="8"
+						key="rectangle-11"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="417"
+						y="356"
+						width="108"
+						height="27"
+						key="staticText-89"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[School Nurse]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="405"
+						y="358"
+						width="12"
+						height="15"
+						key="staticText-90"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA013().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="15"
+						y="391"
+						width="7"
+						height="8"
+						key="rectangle-12"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="28"
+						y="388"
+						width="108"
+						height="27"
+						key="staticText-91"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Child Study]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="16"
+						y="390"
+						width="12"
+						height="15"
+						key="staticText-92"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA004().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="202"
+						y="395"
+						width="7"
+						height="8"
+						key="rectangle-13"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="215"
+						y="388"
+						width="165"
+						height="27"
+						key="staticText-93"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Parent/Teacher Conference (update academic / behavior progrss)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="203"
+						y="394"
+						width="12"
+						height="15"
+						key="staticText-94"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA009().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="404"
+						y="391"
+						width="7"
+						height="8"
+						key="rectangle-14"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="417"
+						y="388"
+						width="108"
+						height="27"
+						key="staticText-95"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[School Social Worker]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="405"
+						y="390"
+						width="12"
+						height="15"
+						key="staticText-96"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA014().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="15"
+						y="423"
+						width="7"
+						height="8"
+						key="rectangle-15"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="28"
+						y="420"
+						width="108"
+						height="27"
+						key="staticText-97"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[CIS (Communities in Schools)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="16"
+						y="422"
+						width="12"
+						height="15"
+						key="staticText-98"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA005().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="202"
+						y="423"
+						width="7"
+						height="8"
+						key="rectangle-16"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="215"
+						y="420"
+						width="108"
+						height="27"
+						key="staticText-99"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[RBHA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="203"
+						y="422"
+						width="12"
+						height="15"
+						key="staticText-100"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA010().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="404"
+						y="423"
+						width="7"
+						height="8"
+						key="rectangle-17"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="417"
+						y="420"
+						width="108"
+						height="27"
+						key="staticText-101"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Violence Prevention Spec. (FACE)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="405"
+						y="422"
+						width="12"
+						height="15"
+						key="staticText-102"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA015().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="15"
+						y="455"
+						width="7"
+						height="8"
+						key="rectangle-18"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="28"
+						y="452"
+						width="108"
+						height="17"
+						key="staticText-103"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Court]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="16"
+						y="454"
+						width="12"
+						height="15"
+						key="staticText-104"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA006().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="202"
+						y="454"
+						width="7"
+						height="8"
+						key="rectangle-19"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="215"
+						y="451"
+						width="108"
+						height="17"
+						key="staticText-105"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[SAST Meeting]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="203"
+						y="453"
+						width="12"
+						height="15"
+						key="staticText-106"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA011().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="15"
+						y="477"
+						width="7"
+						height="8"
+						key="rectangle-20"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="28"
+						y="474"
+						width="108"
+						height="17"
+						key="staticText-107"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Other]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="16"
+						y="476"
+						width="12"
+						height="15"
+						key="staticText-108"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA007().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="202"
+						y="476"
+						width="7"
+						height="8"
+						key="rectangle-21"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="215"
+						y="473"
+						width="108"
+						height="17"
+						key="staticText-109"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[School Counselor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="203"
+						y="475"
+						width="12"
+						height="15"
+						key="staticText-110"
+						positionType="Float">
+							<printWhenExpression><![CDATA[new Boolean( $F{edPlan}.getFieldA012().equals("1"))]]></printWhenExpression>
+						</reportElement>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[X]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="182"
+						width="535"
+						height="16"
+						forecolor="#FFFFFF"
+						backcolor="#000000"
+						key="staticText-112"
+						positionType="Float"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica" isBold="true"/>
+					</textElement>
+				<text><![CDATA[INTERVENTION PLAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="535"
+						height="16"
+						forecolor="#FFFFFF"
+						backcolor="#000000"
+						key="staticText-113"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica" isBold="true"/>
+					</textElement>
+				<text><![CDATA[PARENT/GUARDIAN COMMENTS]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="16"
+						width="535"
+						height="166"
+						key="textField-47"/>
+					<box leftPadding="3">					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{edPlan}.getFieldD002()]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="198"
+						width="535"
+						height="133"
+						key="textField-48"
+						positionType="Float"/>
+					<box leftPadding="3">					<topPen lineWidth="1.0" lineStyle="Solid"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid"/>
+</box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{edPlan}.getFieldD001()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="546"
+						width="152"
+						height="14"
+						key="staticText-114"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Parent/Guardian's Name (Print):]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="157"
+						y="564"
+						width="373"
+						height="0"
+						key="line-37"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="0"
+						y="597"
+						width="152"
+						height="14"
+						key="staticText-115"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Parent/Guardian's Signature:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="157"
+						y="615"
+						width="185"
+						height="0"
+						key="line-38"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="157"
+						y="715"
+						width="185"
+						height="0"
+						key="line-39"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="404"
+						y="614"
+						width="126"
+						height="1"
+						key="line-40"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="375"
+						y="597"
+						width="31"
+						height="18"
+						key="staticText-116"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Date:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="404"
+						y="664"
+						width="126"
+						height="1"
+						key="line-41"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="375"
+						y="647"
+						width="31"
+						height="18"
+						key="staticText-117"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Date:]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="404"
+						y="714"
+						width="126"
+						height="1"
+						key="line-42"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<staticText>
+					<reportElement
+						x="375"
+						y="697"
+						width="31"
+						height="18"
+						key="staticText-118"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Date:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="697"
+						width="152"
+						height="14"
+						key="staticText-119"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Attendance Officer's Signature:]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement
+						x="1"
+						y="650"
+						width="8"
+						height="8"
+						key="rectangle-22"
+						positionType="Float"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<staticText>
+					<reportElement
+						x="15"
+						y="649"
+						width="311"
+						height="11"
+						key="staticText-120"
+						positionType="Float"/>
+					<box></box>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+				<text><![CDATA[Parent/Guardian participated via telephone conference]]></text>
+				</staticText>
+			</band>
+			</groupFooter>
+		</group>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="56"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="152"
+						y="3"
+						width="236"
+						height="16"
+						key="staticText-1"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="11" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Richmond Public Schools]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="115"
+						y="17"
+						width="308"
+						height="16"
+						key="staticText-2"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-BoldOblique" size="11" isBold="true" isItalic="true"/>
+					</textElement>
+				<text><![CDATA[The Office of Family and Community Engagement]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="116"
+						y="36"
+						width="308"
+						height="20"
+						key="staticText-3"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[ATTENDANCE INTERVENTION PLAN]]></text>
+				</staticText>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="15"  isSplitAllowed="true" >
+				<printWhenExpression><![CDATA[new Boolean($V{PAGE_NUMBER}.intValue() !=1)]]></printWhenExpression>
+				<staticText>
+					<reportElement
+						x="368"
+						y="3"
+						width="66"
+						height="12"
+						key="staticText-43"/>
+					<box></box>
+					<textElement>
+						<font pdfFontName="Helvetica-Bold" size="8" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Student's Name:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="438"
+						y="3"
+						width="96"
+						height="12"
+						key="textField-5"/>
+					<box></box>
+					<textElement>
+						<font size="8"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{student}.getNameView()]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="765"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="0"
+						width="535"
+						height="16"
+						forecolor="#FFFFFF"
+						backcolor="#000000"
+						key="staticText-74"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica" isBold="true"/>
+					</textElement>
+				<text><![CDATA[MANDATORY]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="97"
+						width="535"
+						height="16"
+						forecolor="#FFFFFF"
+						backcolor="#000000"
+						key="staticText-75"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica" isBold="true"/>
+					</textElement>
+				<text><![CDATA[UNEXCUSED ABSENCES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="27"
+						y="38"
+						width="374"
+						height="13"
+						key="staticText-78"/>
+					<box></box>
+					<textElement isStyledText="true">
+						<font pdfFontName="Helvetica-Bold" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Contact <style isUnderline='true' >NOT</style> Established (All attempts have been exhausted)]]></text>
+				</staticText>
+				<subreport  isUsingCache="false">
+					<reportElement
+						x="0"
+						y="113"
+						width="535"
+						height="286"
+						key="subreport-1"/>
+					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+					<dataSourceExpression><![CDATA[$F{absences}]]></dataSourceExpression>
+					<subreportExpression  class="java.io.InputStream"><![CDATA[$F{AbsencesSub}]]></subreportExpression>
+				</subreport>
+				<subreport  isUsingCache="false">
+					<reportElement
+						mode="Transparent"
+						x="0"
+						y="414"
+						width="535"
+						height="343"
+						key="subreport-2"
+						positionType="Float"/>
+					<parametersMapExpression><![CDATA[$P{REPORT_PARAMETERS_MAP}]]></parametersMapExpression>
+					<dataSourceExpression><![CDATA[$F{edPlanMeetings}]]></dataSourceExpression>
+					<subreportExpression  class="java.io.InputStream"><![CDATA[$F{meetingSub}]]></subreportExpression>
+				</subreport>
+				<staticText>
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="399"
+						width="535"
+						height="16"
+						forecolor="#FFFFFF"
+						backcolor="#000000"
+						key="staticText-111"
+						positionType="Float"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Helvetica" isBold="true"/>
+					</textElement>
+				<text><![CDATA[TYPE OF CONTACT]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="true" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="423"
+						y="38"
+						width="35"
+						height="14"
+						key="textField-49"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[(  $F{edPlan}.getFieldA002().equals("1") ? "Y" : "N" )]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>
